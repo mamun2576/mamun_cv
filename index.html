@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Mamun — IT Engineer & Web Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #07080f; color: #e2e8f0; font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+  ::selection { background: #2563eb; color: #fff; }
+  ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: #07080f; } ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  @keyframes float1 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }
+  @keyframes float2 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-9px); } }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1); }
+  .reveal.vis { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════ NAV ══════════════════════════════════ -->
+<nav id="mainNav" style="position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 4%;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(7,8,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05);transition:all 0.3s;">
+  <a href="#hero" style="display:flex;align-items:center;gap:11px;text-decoration:none;">
+    <div style="width:40px;height:40px;background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:15px;color:#fff;letter-spacing:0.5px;box-shadow:0 0 20px rgba(37,99,235,0.5);">AM</div>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:#f1f5f9;letter-spacing:0.3px;">Al Mamun</span>
+  </a>
+  <ul style="display:flex;gap:0;list-style:none;" id="navLinks">
+    <li><a href="#about"      style="display:block;padding:0 1rem;height:68px;line-height:68px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.74rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;border-bottom:2px solid transparent;margin-bottom:-2px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">About</a></li>
+    <li><a href="#experience" style="display:block;padding:0 1rem;height:68px;line-height:68px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.74rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;border-bottom:2px solid transparent;margin-bottom:-2px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Experience</a></li>
+    <li><a href="#skills"     style="display:block;padding:0 1rem;height:68px;line-height:68px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.74rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;border-bottom:2px solid transparent;margin-bottom:-2px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Skills</a></li>
+    <li><a href="#education"  style="display:block;padding:0 1rem;height:68px;line-height:68px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.74rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;border-bottom:2px solid transparent;margin-bottom:-2px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Education</a></li>
+    <li><a href="#projects"   style="display:block;padding:0 1rem;height:68px;line-height:68px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.74rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;border-bottom:2px solid transparent;margin-bottom:-2px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Projects</a></li>
+    <li><a href="#contact"    style="display:block;padding:0 1rem;height:68px;line-height:68px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.74rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;border-bottom:2px solid transparent;margin-bottom:-2px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Contact</a></li>
+  </ul>
+  <!-- Mobile hamburger -->
+  <div id="hamburger" style="display:none;cursor:pointer;padding:8px;" onclick="toggleMobileNav()">
+    <div style="width:22px;height:2px;background:#fff;margin:4px 0;transition:0.3s;"></div>
+    <div style="width:22px;height:2px;background:#fff;margin:4px 0;transition:0.3s;"></div>
+    <div style="width:22px;height:2px;background:#fff;margin:4px 0;transition:0.3s;"></div>
+  </div>
+</nav>
+
+<!-- Mobile nav menu -->
+<div id="mobileMenu" style="display:none;position:fixed;top:68px;left:0;right:0;z-index:999;background:rgba(7,8,15,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);padding:20px 0;">
+  <a href="#about"      onclick="toggleMobileNav()" style="display:block;padding:14px 5%;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05);">About</a>
+  <a href="#experience" onclick="toggleMobileNav()" style="display:block;padding:14px 5%;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05);">Experience</a>
+  <a href="#skills"     onclick="toggleMobileNav()" style="display:block;padding:14px 5%;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05);">Skills</a>
+  <a href="#education"  onclick="toggleMobileNav()" style="display:block;padding:14px 5%;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05);">Education</a>
+  <a href="#projects"   onclick="toggleMobileNav()" style="display:block;padding:14px 5%;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05);">Projects</a>
+  <a href="#contact"    onclick="toggleMobileNav()" style="display:block;padding:14px 5%;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;">Contact</a>
+</div>
+
+<!-- ══════════════════════════════════ HERO ══════════════════════════════════ -->
+<section id="hero" style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:68px;">
+
+  <!-- Background grid -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.06) 1px,transparent 1px);background-size:60px 60px;"></div>
+
+  <!-- Radial glows -->
+  <div style="position:absolute;top:-150px;left:-100px;width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,0.18) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-200px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(16,185,129,0.1) 0%,transparent 65%);pointer-events:none;"></div>
+
+  <!-- Floating orbs -->
+  <div style="position:absolute;top:20%;left:8%;width:6px;height:6px;background:#2563eb;border-radius:50%;box-shadow:0 0 20px #2563eb;animation:float1 5s ease-in-out infinite;"></div>
+  <div style="position:absolute;top:40%;right:10%;width:4px;height:4px;background:#10b981;border-radius:50%;box-shadow:0 0 15px #10b981;animation:float2 7s ease-in-out infinite;"></div>
+  <div style="position:absolute;bottom:30%;left:15%;width:5px;height:5px;background:#f59e0b;border-radius:50%;box-shadow:0 0 15px #f59e0b;animation:float1 6s ease-in-out infinite;"></div>
+
+  <div style="max-width:1200px;margin:0 auto;padding:6rem 5% 5rem;width:100%;position:relative;z-index:1;">
+    <div style="display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center;">
+
+      <!-- Left -->
+      <div style="animation:fadeUp 0.8s cubic-bezier(.22,1,.36,1) both;">
+
+        <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.3);padding:7px 18px;border-radius:30px;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#93c5fd;margin-bottom:2rem;">
+          <span style="width:7px;height:7px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px #4ade80;display:inline-block;animation:pulse 2s infinite;"></span>
+          Available for Hire
+        </div>
+
+        <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,6vw,5.8rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;color:#f8fafc;margin-bottom:1.4rem;">
+          Al<br>
+          <span style="background:linear-gradient(90deg,#2563eb,#60a5fa,#2563eb);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;">Mamun</span>
+        </h1>
+
+        <p style="font-size:1.05rem;color:rgba(255,255,255,0.55);font-weight:300;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.6rem;">IT Support Engineer &amp; Web Developer</p>
+
+        <p style="font-size:0.92rem;color:rgba(255,255,255,0.45);line-height:1.95;max-width:480px;margin-bottom:2.5rem;">
+          3+ years of hands-on experience in banking, enterprise networking, and production web systems. Passionate about building reliable, scalable digital infrastructure.
+        </p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:3rem;">
+          <a href="cv.pdf" style="display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;padding:0.85rem 2rem;border-radius:10px;font-size:0.82rem;font-weight:600;letter-spacing:0.04em;text-decoration:none;box-shadow:0 0 30px rgba(37,99,235,0.4);transition:all 0.25s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 0 40px rgba(37,99,235,0.6)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 0 30px rgba(37,99,235,0.4)'">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 16l-4-4m0 0l4-4m-4 4h14M6 20H4a2 2 0 01-2-2V6a2 2 0 012-2h2"/></svg>
+            Download Resume
+          </a>
+          <a href="https://github.com/mamun2576" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#e2e8f0;padding:0.85rem 2rem;border-radius:10px;font-size:0.82rem;font-weight:600;letter-spacing:0.04em;text-decoration:none;border:1px solid rgba(255,255,255,0.15);transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.background='transparent'">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+
+        <!-- Stats row -->
+        <div style="display:flex;gap:2.5rem;flex-wrap:wrap;">
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:#f8fafc;line-height:1;">3+</div>
+            <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Years Exp.</div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:#f8fafc;line-height:1;">4</div>
+            <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Companies</div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:#f8fafc;line-height:1;">3.63</div>
+            <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">CGPA / 4.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — profile card -->
+      <div style="animation:fadeUp 1s cubic-bezier(.22,1,.36,1) 0.2s both;position:relative;">
+
+        <!-- Card -->
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2.5rem;position:relative;backdrop-filter:blur(10px);overflow:hidden;">
+
+          <!-- Corner accent -->
+          <div style="position:absolute;top:0;left:0;width:100px;height:100px;background:linear-gradient(135deg,rgba(37,99,235,0.3),transparent);border-radius:0 0 100% 0;"></div>
+          <div style="position:absolute;bottom:0;right:0;width:80px;height:80px;background:linear-gradient(315deg,rgba(16,185,129,0.2),transparent);border-radius:100% 0 0 0;"></div>
+
+          <!-- Avatar placeholder -->
+          <div style="width:110px;height:110px;border-radius:50%;position:relative;margin:0 auto 1.8rem;
+          border:3px solid rgba(37,99,235,0.5);box-shadow:0 0 40px rgba(37,99,235,0.4);overflow:hidden;">
+
+            <img src="mamun.png" alt="Mamun"
+                style="width:100%;height:100%;object-fit:cover;position:relative;z-index:1;">
+
+            <div style="position:absolute;inset:0;
+            background:linear-gradient(135deg,#1e3a8a,#2563eb);
+            opacity:0.25;z-index:2;"></div>
+
+          </div>
+
+          <div style="text-align:center;margin-bottom:2rem;position:relative;z-index:1;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">Al Mamun</div>
+            <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);">AO (ICT) · FSIB · Dhaka</div>
+          </div>
+
+          <!-- Tech tags -->
+          <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative;z-index:1;">
+            <span style="padding:5px 12px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);border-radius:20px;font-size:0.7rem;font-weight:500;color:#93c5fd;animation:float1 5s ease-in-out infinite;">⚙️ Linux / Server</span>
+            <span style="padding:5px 12px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:20px;font-size:0.7rem;font-weight:500;color:#6ee7b7;animation:float2 6s ease-in-out infinite;">🌐 Networking</span>
+            <span style="padding:5px 12px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:20px;font-size:0.7rem;font-weight:500;color:#fcd34d;animation:float1 7s ease-in-out infinite;">🐳 Docker</span>
+            <span style="padding:5px 12px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);border-radius:20px;font-size:0.7rem;font-weight:500;color:#c4b5fd;animation:float2 4.5s ease-in-out infinite;">💻 PHP / Laravel</span>
+            <span style="padding:5px 12px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:20px;font-size:0.7rem;font-weight:500;color:#fca5a5;animation:float1 5.5s ease-in-out infinite;">🔐 Security</span>
+            <span style="padding:5px 12px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.25);border-radius:20px;font-size:0.7rem;font-weight:500;color:#67e8f9;animation:float2 8s ease-in-out infinite;">🗄️ SQL / CBS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeIn 2s 1s both;">
+    <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);">Scroll</div>
+    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(37,99,235,0.6),transparent);"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ ABOUT ══════════════════════════════════ -->
+<section id="about" style="padding:7rem 5%;background:#0b0c17;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.4),transparent);"></div>
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;" class="reveal">
+      <div style="width:28px;height:2px;background:#2563eb;border-radius:2px;"></div>
+      <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">About Me</span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#f8fafc;letter-spacing:-0.02em;margin-bottom:3.5rem;" class="reveal">Who I Am</h2>
+
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start;">
+
+      <!-- Text -->
+      <div class="reveal">
+        <p style="font-size:0.93rem;color:rgba(255,255,255,0.55);line-height:2;margin-bottom:1.2rem;">
+          I'm <strong style="color:#f8fafc;font-weight:600;">Al Mamun</strong>, an IT professional based in Dhaka, Bangladesh. I hold a <strong style="color:#f8fafc;font-weight:600;">Bachelor of Engineering in Computer Science & Engineering</strong> from Daffodil International University (CGPA 3.63) and am currently pursuing my <strong style="color:#f8fafc;font-weight:600;">Master's in Computer Science</strong> at Jahangirnagar University.
+        </p>
+        <p style="font-size:0.93rem;color:rgba(255,255,255,0.55);line-height:2;margin-bottom:1.2rem;">
+          Over 2.8+ years, I've worked across <strong style="color:#93c5fd;font-weight:600;">banking (First Security Islami Bank)</strong>, <strong style="color:#93c5fd;font-weight:600;">insurance (Green Delta)</strong>, and IT services — gaining deep expertise in Core Banking Systems, SQL databases, enterprise networking, and full system administration.
+        </p>
+        <p style="font-size:0.93rem;color:rgba(255,255,255,0.55);line-height:2;">
+          I'm a fast learner who thrives under pressure and brings strong communication skills alongside technical depth. My passion spans both IT infrastructure and modern web development.
+        </p>
+
+        <!-- Soft skills pills -->
+        <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:2rem;">
+          <span style="padding:6px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:0.72rem;color:rgba(255,255,255,0.6);">Fast Learner</span>
+          <span style="padding:6px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:0.72rem;color:rgba(255,255,255,0.6);">Team Player</span>
+          <span style="padding:6px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:0.72rem;color:rgba(255,255,255,0.6);">Problem Solver</span>
+          <span style="padding:6px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:0.72rem;color:rgba(255,255,255,0.6);">Detail-Oriented</span>
+          <span style="padding:6px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:0.72rem;color:rgba(255,255,255,0.6);">Pressure-Resilient</span>
+        </div>
+      </div>
+
+      <!-- Info grid -->
+      <div style="display:flex;flex-direction:column;gap:10px;" class="reveal">
+        <!-- Info rows -->
+        <div style="display:flex;align-items:center;gap:14px;padding:0.9rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.07)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="width:36px;height:36px;background:rgba(37,99,235,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">📍</div>
+          <div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2px;">Location</div>
+            <div style="font-size:0.84rem;color:#e2e8f0;font-weight:500;">Kuril, Vatara, Dhaka</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:0.9rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.07)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="width:36px;height:36px;background:rgba(37,99,235,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">📞</div>
+          <div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2px;">Mobile</div>
+            <div style="font-size:0.84rem;color:#e2e8f0;font-weight:500;">+880 1766-284374</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:0.9rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.07)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="width:36px;height:36px;background:rgba(37,99,235,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">✉️</div>
+          <div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2px;">Email</div>
+            <div style="font-size:0.84rem;color:#e2e8f0;font-weight:500;">mamun191152576@gmail.com</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:0.9rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.07)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="width:36px;height:36px;background:rgba(37,99,235,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🏠</div>
+          <div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2px;">Hometown</div>
+            <div style="font-size:0.84rem;color:#e2e8f0;font-weight:500;">Tarakandi, Narsingdi</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:0.9rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.07)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="width:36px;height:36px;background:rgba(37,99,235,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🎂</div>
+          <div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2px;">Date of Birth</div>
+            <div style="font-size:0.84rem;color:#e2e8f0;font-weight:500;">May 3, 2001</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:0.9rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.07)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="width:36px;height:36px;background:rgba(37,99,235,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🌐</div>
+          <div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2px;">Nationality</div>
+            <div style="font-size:0.84rem;color:#e2e8f0;font-weight:500;">Bangladeshi</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:0.9rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;transition:all 0.25s;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.07)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="width:36px;height:36px;background:rgba(37,99,235,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">💬</div>
+          <div>
+            <div style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2px;">Languages</div>
+            <div style="font-size:0.84rem;color:#e2e8f0;font-weight:500;">Bengali (Native) · English (Proficient)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ EXPERIENCE ══════════════════════════════════ -->
+<section id="experience" style="padding:7rem 5%;background:#07080f;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.4),transparent);"></div>
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;" class="reveal">
+      <div style="width:28px;height:2px;background:#2563eb;border-radius:2px;"></div>
+      <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">Career</span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#f8fafc;letter-spacing:-0.02em;margin-bottom:3.5rem;" class="reveal">Work History</h2>
+
+    <!-- Timeline -->
+    <div style="position:relative;">
+
+      <!-- Vertical line -->
+      <div style="position:absolute;left:18px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,#2563eb,rgba(37,99,235,0.1));"></div>
+
+      <!-- Job 1 -->
+      <div style="display:flex;gap:2.5rem;margin-bottom:3rem;" class="reveal">
+        <div style="flex-shrink:0;position:relative;">
+          <div style="width:37px;height:37px;background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:50%;border:3px solid #07080f;box-shadow:0 0 20px rgba(37,99,235,0.5);display:flex;align-items:center;justify-content:center;">
+            <div style="width:8px;height:8px;background:#fff;border-radius:50%;"></div>
+          </div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:2rem 2.2rem;transition:all 0.3s;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(37,99,235,0.35)';this.style.background='rgba(37,99,235,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,#2563eb,#60a5fa);border-radius:18px 0 0 18px;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:0.9rem;">
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#f8fafc;margin-bottom:3px;">AO (ICT)</div>
+              <div style="font-size:0.85rem;font-weight:600;color:#93c5fd;">First Security Islami Bank Limited</div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:2px;">📍 Gulshan 1, Dhaka</div>
+            </div>
+            <span style="padding:5px 14px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);border-radius:20px;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;color:#93c5fd;white-space:nowrap;">Sep 2024 — Present</span>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;">
+              <span style="position:absolute;left:0;color:#2563eb;font-weight:700;">›</span>
+              Install, configure, and maintain OS, applications, and network systems
+            </li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;">
+              <span style="position:absolute;left:0;color:#2563eb;font-weight:700;">›</span>
+              Manage SQL databases and Core Banking System operations
+            </li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;">
+              <span style="position:absolute;left:0;color:#2563eb;font-weight:700;">›</span>
+              Oversee LAN, WAN, WiFi access control and IT hardware inventory
+            </li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;">
+              <span style="position:absolute;left:0;color:#2563eb;font-weight:700;">›</span>
+              Provide prompt technical support and preventive maintenance
+            </li>
+          </ul>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1.2rem;">
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">Banking</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">SQL</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">Core Banking</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">Networking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 2 -->
+      <div style="display:flex;gap:2.5rem;margin-bottom:3rem;" class="reveal">
+        <div style="flex-shrink:0;position:relative;">
+          <div style="width:37px;height:37px;background:linear-gradient(135deg,#0891b2,#0e7490);border-radius:50%;border:3px solid #07080f;box-shadow:0 0 20px rgba(8,145,178,0.4);display:flex;align-items:center;justify-content:center;">
+            <div style="width:8px;height:8px;background:#fff;border-radius:50%;"></div>
+          </div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:2rem 2.2rem;transition:all 0.3s;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(8,145,178,0.35)';this.style.background='rgba(8,145,178,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,#0891b2,#22d3ee);border-radius:18px 0 0 18px;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:0.9rem;">
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#f8fafc;margin-bottom:3px;">Senior Executive Officer (IT)</div>
+              <div style="font-size:0.85rem;font-weight:600;color:#67e8f9;">Green Delta Insurance Company</div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:2px;">📍 Mohakhali, Dhaka</div>
+            </div>
+            <span style="padding:5px 14px;background:rgba(8,145,178,0.12);border:1px solid rgba(8,145,178,0.3);border-radius:20px;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;color:#67e8f9;white-space:nowrap;">Oct 2023 — Aug 2024</span>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#0891b2;font-weight:700;">›</span>Configured and maintained computer systems and enterprise software</li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#0891b2;font-weight:700;">›</span>Managed IT help desk ticketing and equipment inventory tracking</li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#0891b2;font-weight:700;">›</span>Developed IT policies, procedures, and technical documentation</li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#0891b2;font-weight:700;">›</span>Generated system performance and help desk activity reports</li>
+          </ul>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1.2rem;">
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">Insurance</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">IT Support</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">Helpdesk</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 3 -->
+      <div style="display:flex;gap:2.5rem;margin-bottom:3rem;" class="reveal">
+        <div style="flex-shrink:0;position:relative;">
+          <div style="width:37px;height:37px;background:linear-gradient(135deg,#7c3aed,#6d28d9);border-radius:50%;border:3px solid #07080f;box-shadow:0 0 20px rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;">
+            <div style="width:8px;height:8px;background:#fff;border-radius:50%;"></div>
+          </div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:2rem 2.2rem;transition:all 0.3s;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(124,58,237,0.35)';this.style.background='rgba(124,58,237,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,#7c3aed,#a78bfa);border-radius:18px 0 0 18px;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:0.9rem;">
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#f8fafc;margin-bottom:3px;">IT & Web Developer</div>
+              <div style="font-size:0.85rem;font-weight:600;color:#c4b5fd;">Ababil Group</div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:2px;">📍 Uttara, Dhaka</div>
+            </div>
+            <span style="padding:5px 14px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);border-radius:20px;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;color:#c4b5fd;white-space:nowrap;">Jan 2023 — Sep 2023</span>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#7c3aed;font-weight:700;">›</span>Managed Windows Server, Synology NAS, and Linux infrastructure</li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#7c3aed;font-weight:700;">›</span>Configured MikroTik routers, VPN tunnels, firewalls, and DHCP</li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#7c3aed;font-weight:700;">›</span>Maintained overall office network and wireless access systems</li>
+          </ul>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1.2rem;">
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">MikroTik</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">VPN</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">Linux</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">NAS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 4 -->
+      <div style="display:flex;gap:2.5rem;" class="reveal">
+        <div style="flex-shrink:0;position:relative;">
+          <div style="width:37px;height:37px;background:linear-gradient(135deg,#d97706,#b45309);border-radius:50%;border:3px solid #07080f;box-shadow:0 0 20px rgba(217,119,6,0.4);display:flex;align-items:center;justify-content:center;">
+            <div style="width:8px;height:8px;background:#fff;border-radius:50%;"></div>
+          </div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:2rem 2.2rem;transition:all 0.3s;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(217,119,6,0.35)';this.style.background='rgba(217,119,6,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+          <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,#d97706,#fcd34d);border-radius:18px 0 0 18px;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:0.9rem;">
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#f8fafc;margin-bottom:3px;">Web Developer</div>
+              <div style="font-size:0.85rem;font-weight:600;color:#fcd34d;">Fraction Digital</div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:2px;">📍 Naya Paltan, Dhaka</div>
+            </div>
+            <span style="padding:5px 14px;background:rgba(217,119,6,0.12);border:1px solid rgba(217,119,6,0.3);border-radius:20px;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;color:#fcd34d;white-space:nowrap;">Oct 2022 — Dec 2022</span>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#d97706;font-weight:700;">›</span>Designed and developed WordPress websites for various clients</li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#d97706;font-weight:700;">›</span>Customized themes, plugins, and page layouts to specification</li>
+            <li style="font-size:0.82rem;color:rgba(255,255,255,0.5);padding-left:1.2rem;position:relative;line-height:1.7;"><span style="position:absolute;left:0;color:#d97706;font-weight:700;">›</span>Delivered responsive and fully functional client web projects</li>
+          </ul>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:1.2rem;">
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">WordPress</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">HTML/CSS</span>
+            <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:6px;font-size:0.68rem;color:rgba(255,255,255,0.4);">PHP</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ SKILLS ══════════════════════════════════ -->
+<section id="skills" style="padding:7rem 5%;background:#0b0c17;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.4),transparent);"></div>
+
+  <!-- Background decoration -->
+  <div style="position:absolute;right:-200px;top:50%;transform:translateY(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;" class="reveal">
+      <div style="width:28px;height:2px;background:#2563eb;border-radius:2px;"></div>
+      <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">Expertise</span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#f8fafc;letter-spacing:-0.02em;margin-bottom:3.5rem;" class="reveal">Skills & Specializations</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;">
+
+      <!-- Skill cards -->
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:default;" class="reveal" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.06)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(37,99,235,0.1));border:1px solid rgba(37,99,235,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.1rem;">🖥️</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;color:#f1f5f9;margin-bottom:0.5rem;">System Administration</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);line-height:1.8;">Windows Server, Linux, Mac OS, Synology NAS — configuration & maintenance.</div>
+        <div style="margin-top:1rem;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+          <div style="width:90%;height:100%;background:linear-gradient(90deg,#2563eb,#60a5fa);border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:default;" class="reveal" onmouseover="this.style.borderColor='rgba(8,145,178,0.4)';this.style.background='rgba(8,145,178,0.06)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(8,145,178,0.2),rgba(8,145,178,0.1));border:1px solid rgba(8,145,178,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.1rem;">🌐</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;color:#f1f5f9;margin-bottom:0.5rem;">Network Administration</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);line-height:1.8;">LAN, WAN, VPN, MikroTik, DHCP, wireless routers and firewall setup.</div>
+        <div style="margin-top:1rem;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+          <div style="width:88%;height:100%;background:linear-gradient(90deg,#0891b2,#22d3ee);border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:default;" class="reveal" onmouseover="this.style.borderColor='rgba(239,68,68,0.4)';this.style.background='rgba(239,68,68,0.06)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(239,68,68,0.1));border:1px solid rgba(239,68,68,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.1rem;">🔐</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;color:#f1f5f9;margin-bottom:0.5rem;">Network Security</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);line-height:1.8;">Active Directory, firewall management, access control, VPN tunneling.</div>
+        <div style="margin-top:1rem;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+          <div style="width:82%;height:100%;background:linear-gradient(90deg,#ef4444,#f87171);border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:default;" class="reveal" onmouseover="this.style.borderColor='rgba(16,185,129,0.4)';this.style.background='rgba(16,185,129,0.06)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(16,185,129,0.1));border:1px solid rgba(16,185,129,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.1rem;">🗄️</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;color:#f1f5f9;margin-bottom:0.5rem;">Database & CBS</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);line-height:1.8;">SQL database management and Core Banking System support & operations.</div>
+        <div style="margin-top:1rem;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+          <div style="width:85%;height:100%;background:linear-gradient(90deg,#10b981,#34d399);border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:default;" class="reveal" onmouseover="this.style.borderColor='rgba(124,58,237,0.4)';this.style.background='rgba(124,58,237,0.06)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(124,58,237,0.1));border:1px solid rgba(124,58,237,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.1rem;">💻</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;color:#f1f5f9;margin-bottom:0.5rem;">Web Development</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);line-height:1.8;">PHP, Laravel, HTML, CSS, Bootstrap, WordPress — frontend to backend.</div>
+        <div style="margin-top:1rem;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+          <div style="width:78%;height:100%;background:linear-gradient(90deg,#7c3aed,#a78bfa);border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:default;" class="reveal" onmouseover="this.style.borderColor='rgba(245,158,11,0.4)';this.style.background='rgba(245,158,11,0.06)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.1));border:1px solid rgba(245,158,11,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.1rem;">🔧</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;color:#f1f5f9;margin-bottom:0.5rem;">IT Support</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);line-height:1.8;">Hardware/software troubleshooting, peripherals, inventory, help desk.</div>
+        <div style="margin-top:1rem;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+          <div style="width:92%;height:100%;background:linear-gradient(90deg,#f59e0b,#fcd34d);border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:default;" class="reveal" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.06)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(37,99,235,0.1));border:1px solid rgba(37,99,235,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.1rem;">📋</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;color:#f1f5f9;margin-bottom:0.5rem;">IT Documentation</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);line-height:1.8;">Policy development, technical writing, report generation, ticketing.</div>
+        <div style="margin-top:1rem;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+          <div style="width:80%;height:100%;background:linear-gradient(90deg,#2563eb,#60a5fa);border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.8rem;transition:all 0.3s;cursor:default;" class="reveal" onmouseover="this.style.borderColor='rgba(6,182,212,0.4)';this.style.background='rgba(6,182,212,0.06)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(6,182,212,0.1));border:1px solid rgba(6,182,212,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.1rem;">☁️</div>
+        <div style="font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;color:#f1f5f9;margin-bottom:0.5rem;">Infrastructure & Cloud</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);line-height:1.8;">NAS, remote desktop, virtualization, Docker, cloud storage for enterprise.</div>
+        <div style="margin-top:1rem;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
+          <div style="width:75%;height:100%;background:linear-gradient(90deg,#06b6d4,#67e8f9);border-radius:2px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ EDUCATION ══════════════════════════════════ -->
+<section id="education" style="padding:7rem 5%;background:#07080f;position:relative;">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.4),transparent);"></div>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;" class="reveal">
+      <div style="width:28px;height:2px;background:#2563eb;border-radius:2px;"></div>
+      <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">Education</span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#f8fafc;letter-spacing:-0.02em;margin-bottom:3.5rem;" class="reveal">Academic Background</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:3.5rem;">
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;" class="reveal" onmouseover="this.style.borderColor='rgba(37,99,235,0.35)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='none'">
+        <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent);"></div>
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2563eb;margin-bottom:0.7rem;">2026 — Enrolled</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">Master of Science (MSc)</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:3px;">Computer Science</div>
+        <div style="font-size:0.85rem;font-weight:600;color:#e2e8f0;margin-bottom:1rem;">Jahangirnagar University</div>
+        <span style="display:inline-block;padding:5px 14px;background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.25);border-radius:20px;font-size:0.68rem;font-weight:700;color:#93c5fd;">Currently Enrolled · 1st Year</span>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;" class="reveal" onmouseover="this.style.borderColor='rgba(16,185,129,0.35)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='none'">
+        <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle,rgba(16,185,129,0.12),transparent);"></div>
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#10b981;margin-bottom:0.7rem;">2019 — 2023</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">Bachelor of Engineering (BEngg)</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:3px;">Computer Science & Engineering</div>
+        <div style="font-size:0.85rem;font-weight:600;color:#e2e8f0;margin-bottom:1rem;">Daffodil International University (DIU)</div>
+        <span style="display:inline-block;padding:5px 14px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:20px;font-size:0.68rem;font-weight:700;color:#6ee7b7;">CGPA: 3.63 / 4.00</span>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;" class="reveal" onmouseover="this.style.borderColor='rgba(245,158,11,0.35)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='none'">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f59e0b;margin-bottom:0.7rem;">2018</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">Higher Secondary Certificate (HSC)</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:3px;">Science</div>
+        <div style="font-size:0.85rem;font-weight:600;color:#e2e8f0;margin-bottom:1rem;">Narsingdi Model College</div>
+        <span style="display:inline-block;padding:5px 14px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:20px;font-size:0.68rem;font-weight:700;color:#fcd34d;">GPA: 3.83 / 5.00</span>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;" class="reveal" onmouseover="this.style.borderColor='rgba(124,58,237,0.35)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='none'">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#7c3aed;margin-bottom:0.7rem;">2016</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">Secondary School Certificate (SSC)</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:3px;">Science</div>
+        <div style="font-size:0.85rem;font-weight:600;color:#e2e8f0;margin-bottom:1rem;">Tarakandi High School</div>
+        <span style="display:inline-block;padding:5px 14px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25);border-radius:20px;font-size:0.68rem;font-weight:700;color:#c4b5fd;">GPA: 4.89 / 5.00</span>
+      </div>
+
+    </div>
+
+    <!-- Certifications -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:2rem;" class="reveal">
+      <div style="width:28px;height:2px;background:#2563eb;border-radius:2px;"></div>
+      <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">Training</span>
+    </div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:#f8fafc;margin-bottom:2rem;" class="reveal">Certifications & Courses</h3>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;">
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #2563eb;border-radius:14px;padding:1.5rem;transition:all 0.25s;" class="reveal" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(37,99,235,0.15)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+        <div style="font-size:1.5rem;margin-bottom:0.8rem;">🖥️</div>
+        <div style="font-weight:700;font-size:0.88rem;color:#f1f5f9;margin-bottom:0.4rem;">Windows Server</div>
+        <div style="font-size:0.75rem;color:#2563eb;font-weight:600;margin-bottom:0.3rem;">Innovate IT Service · Dhaka</div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.35);">2024 · 3 months</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #0891b2;border-radius:14px;padding:1.5rem;transition:all 0.25s;" class="reveal" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(8,145,178,0.15)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+        <div style="font-size:1.5rem;margin-bottom:0.8rem;">🐘</div>
+        <div style="font-weight:700;font-size:0.88rem;color:#f1f5f9;margin-bottom:0.4rem;">PHP & Laravel</div>
+        <div style="font-size:0.75rem;color:#0891b2;font-weight:600;margin-bottom:0.3rem;">HR Venture · Dhaka</div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.35);">2021 · 4 months · Certified</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #7c3aed;border-radius:14px;padding:1.5rem;transition:all 0.25s;" class="reveal" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+        <div style="font-size:1.5rem;margin-bottom:0.8rem;">🎨</div>
+        <div style="font-weight:700;font-size:0.88rem;color:#f1f5f9;margin-bottom:0.4rem;">Web Design</div>
+        <div style="font-size:0.75rem;color:#7c3aed;font-weight:600;margin-bottom:0.3rem;">Digital IT · Dhaka</div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.35);">2021 · 3 months · HTML, CSS, Bootstrap</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #d97706;border-radius:14px;padding:1.5rem;transition:all 0.25s;" class="reveal" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(217,119,6,0.15)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+        <div style="font-size:1.5rem;margin-bottom:0.8rem;">🛡️</div>
+        <div style="font-weight:700;font-size:0.88rem;color:#f1f5f9;margin-bottom:0.4rem;">IT Support Service</div>
+        <div style="font-size:0.75rem;color:#d97706;font-weight:600;margin-bottom:0.3rem;">Pencilbox Training Institute</div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.35);">2021 · 30 hrs · Server, NAS, VPN, Firewall</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ PROJECTS ══════════════════════════════════ -->
+<section id="projects" style="padding:7rem 5%;background:#0b0c17;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.4),transparent);"></div>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;" class="reveal">
+      <div style="width:28px;height:2px;background:#2563eb;border-radius:2px;"></div>
+      <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">Work</span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#f8fafc;letter-spacing:-0.02em;margin-bottom:3.5rem;" class="reveal">Featured Projects</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;">
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;transition:all 0.35s;position:relative;overflow:hidden;" class="reveal" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 40px rgba(37,99,235,0.12)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='none';this.style.boxShadow='none'">
+        <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(37,99,235,0.15),transparent);"></div>
+        <div style="width:50px;height:50px;background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(37,99,235,0.08));border:1px solid rgba(37,99,235,0.25);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.4rem;">🎓</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#f8fafc;margin-bottom:0.6rem;line-height:1.3;">Alumni Association Platform for JU PMSCS</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:1.4rem;">A dedicated platform for the Post-Master's Computer Science department alumni — profiles, networking, and event management.</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;">
+          <span style="padding:4px 10px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.2);border-radius:6px;font-size:0.65rem;color:#93c5fd;">Laravel</span>
+          <span style="padding:4px 10px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.2);border-radius:6px;font-size:0.65rem;color:#93c5fd;">PHP</span>
+          <span style="padding:4px 10px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.2);border-radius:6px;font-size:0.65rem;color:#93c5fd;">MySQL</span>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;transition:all 0.35s;position:relative;overflow:hidden;" class="reveal" onmouseover="this.style.borderColor='rgba(239,68,68,0.4)';this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 40px rgba(239,68,68,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='none';this.style.boxShadow='none'">
+        <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(239,68,68,0.1),transparent);"></div>
+        <div style="width:50px;height:50px;background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(239,68,68,0.08));border:1px solid rgba(239,68,68,0.25);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.4rem;">🗺️</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#f8fafc;margin-bottom:0.6rem;line-height:1.3;">Political Violence Tracker</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:1.4rem;">AI-powered incident tracking system with Laravel backend and interactive map visualization for political events analysis.</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;">
+          <span style="padding:4px 10px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:6px;font-size:0.65rem;color:#fca5a5;">AI/ML</span>
+          <span style="padding:4px 10px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:6px;font-size:0.65rem;color:#fca5a5;">Laravel</span>
+          <span style="padding:4px 10px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:6px;font-size:0.65rem;color:#fca5a5;">Leaflet.js</span>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;transition:all 0.35s;position:relative;overflow:hidden;" class="reveal" onmouseover="this.style.borderColor='rgba(16,185,129,0.4)';this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 40px rgba(16,185,129,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='none';this.style.boxShadow='none'">
+        <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(16,185,129,0.1),transparent);"></div>
+        <div style="width:50px;height:50px;background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(16,185,129,0.08));border:1px solid rgba(16,185,129,0.25);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.4rem;">🐳</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#f8fafc;margin-bottom:0.6rem;line-height:1.3;">DevOps Laravel Pipeline</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:1.4rem;">Full CI/CD pipeline with Docker containers, Nginx reverse proxy, and automated deployment workflows for Laravel applications.</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;">
+          <span style="padding:4px 10px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:6px;font-size:0.65rem;color:#6ee7b7;">Docker</span>
+          <span style="padding:4px 10px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:6px;font-size:0.65rem;color:#6ee7b7;">CI/CD</span>
+          <span style="padding:4px 10px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:6px;font-size:0.65rem;color:#6ee7b7;">Nginx</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ SERVICES ══════════════════════════════════ -->
+<section style="padding:7rem 5%;background:#07080f;position:relative;">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.4),transparent);"></div>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;" class="reveal">
+      <div style="width:28px;height:2px;background:#2563eb;border-radius:2px;"></div>
+      <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">Services</span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#f8fafc;letter-spacing:-0.02em;margin-bottom:3.5rem;" class="reveal">What I Offer</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;">
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:2.2rem;transition:all 0.3s;" class="reveal" onmouseover="this.style.borderColor='rgba(37,99,235,0.35)';this.style.background='rgba(37,99,235,0.04)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+        <div style="font-size:2rem;margin-bottom:1.2rem;">⚙️</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#f8fafc;margin-bottom:0.6rem;">IT Infrastructure</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.85;">End-to-end server setup, enterprise networking, NAS, and full system administration for organizations of any size.</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:2.2rem;transition:all 0.3s;" class="reveal" onmouseover="this.style.borderColor='rgba(239,68,68,0.35)';this.style.background='rgba(239,68,68,0.04)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+        <div style="font-size:2rem;margin-bottom:1.2rem;">🔐</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#f8fafc;margin-bottom:0.6rem;">Network Security</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.85;">Firewall configuration, VPN tunneling, MikroTik setup, Active Directory, and comprehensive access control management.</div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:2.2rem;transition:all 0.3s;" class="reveal" onmouseover="this.style.borderColor='rgba(16,185,129,0.35)';this.style.background='rgba(16,185,129,0.04)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.03)'">
+        <div style="font-size:2rem;margin-bottom:1.2rem;">🐳</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#f8fafc;margin-bottom:0.6rem;">DevOps & Web Dev</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.85;">CI/CD pipelines, Docker containerization, Nginx deployment, and full-stack web development with PHP & Laravel.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ CONTACT ══════════════════════════════════ -->
+<section id="contact" style="padding:7rem 5%;background:#0b0c17;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,0.4),transparent);"></div>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(37,99,235,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;" class="reveal">
+      <div style="width:28px;height:2px;background:#2563eb;border-radius:2px;"></div>
+      <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">Contact</span>
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#f8fafc;letter-spacing:-0.02em;margin-bottom:0.7rem;" class="reveal">Get In Touch</h2>
+    <p style="font-size:0.9rem;color:rgba(255,255,255,0.4);margin-bottom:3.5rem;" class="reveal">Open to new opportunities — let's build something great together.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+
+      <!-- Contact cards -->
+      <div class="reveal">
+        <a href="tel:+8801766284374" style="display:flex;align-items:center;gap:1.2rem;padding:1.4rem 1.6rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;text-decoration:none;color:inherit;transition:all 0.25s;margin-bottom:14px;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.06)';this.style.transform='translateX(5px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(37,99,235,0.25),rgba(37,99,235,0.1));border:1px solid rgba(37,99,235,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📞</div>
+          <div>
+            <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:3px;">Mobile</div>
+            <div style="font-size:0.92rem;font-weight:600;color:#f1f5f9;">+880 1766-284374</div>
+          </div>
+          <div style="margin-left:auto;color:rgba(255,255,255,0.2);font-size:1.1rem;">›</div>
+        </a>
+
+        <a href="mailto:mamun191152576@gmail.com" style="display:flex;align-items:center;gap:1.2rem;padding:1.4rem 1.6rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;text-decoration:none;color:inherit;transition:all 0.25s;margin-bottom:14px;" onmouseover="this.style.borderColor='rgba(37,99,235,0.4)';this.style.background='rgba(37,99,235,0.06)';this.style.transform='translateX(5px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.transform='none'">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(37,99,235,0.25),rgba(37,99,235,0.1));border:1px solid rgba(37,99,235,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">✉️</div>
+          <div>
+            <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:3px;">Email</div>
+            <div style="font-size:0.92rem;font-weight:600;color:#f1f5f9;">mamun191152576@gmail.com</div>
+          </div>
+          <div style="margin-left:auto;color:rgba(255,255,255,0.2);font-size:1.1rem;">›</div>
+        </a>
+
+        <div style="display:flex;align-items:center;gap:1.2rem;padding:1.4rem 1.6rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;margin-bottom:14px;">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(37,99,235,0.25),rgba(37,99,235,0.1));border:1px solid rgba(37,99,235,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📍</div>
+          <div>
+            <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:3px;">Address</div>
+            <div style="font-size:0.92rem;font-weight:600;color:#f1f5f9;">Kuril, Vatara, Dhaka, Bangladesh</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:1rem;">
+          <a href="https://github.com/mamun2576" style="display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.4rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#e2e8f0;text-decoration:none;font-size:0.8rem;font-weight:500;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.12)'">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com" style="display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.4rem;background:rgba(10,102,194,0.1);border:1px solid rgba(10,102,194,0.3);border-radius:10px;color:#93c5fd;text-decoration:none;font-size:0.8rem;font-weight:500;transition:all 0.2s;" onmouseover="this.style.background='rgba(10,102,194,0.18)'" onmouseout="this.style.background='rgba(10,102,194,0.1)'">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: reference + preferences -->
+      <div class="reveal">
+
+        <!-- Preferences card -->
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.8rem;margin-bottom:1.2rem;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#f8fafc;margin-bottom:1.4rem;">Job Preferences</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <span style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Status</span>
+            <span style="font-size:0.88rem;font-weight:700;color:#4ade80;">Available</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <span style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Type</span>
+            <span style="font-size:0.82rem;font-weight:500;color:rgba(255,255,255,0.7);">Full Time / Part Time</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <span style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Mode</span>
+            <span style="font-size:0.82rem;font-weight:500;color:rgba(255,255,255,0.7);">On-site / Remote</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.85rem 0;">
+            <span style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Notice Period</span>
+            <span style="font-size:0.88rem;font-weight:700;color:#fcd34d;">1 Month</span>
+          </div>
+        </div>
+
+        <!-- Reference card -->
+        <div style="background:linear-gradient(135deg,rgba(37,99,235,0.18),rgba(37,99,235,0.06));border:1px solid rgba(37,99,235,0.25);border-radius:18px;padding:1.8rem;">
+          <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.9rem;">Professional Reference</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">Syed Akhter Hossain</div>
+          <div style="font-size:0.82rem;color:#93c5fd;font-weight:600;margin-bottom:3px;">Professor and Dean</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.4);">Daffodil International University</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ CTA BANNER ══════════════════════════════════ -->
+<section style="padding:5rem 5%;background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#0f172a 100%);position:relative;overflow:hidden;text-align:center;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px;"></div>
+  <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:#f8fafc;margin-bottom:1rem;" class="reveal">Ready to Work Together?</div>
+    <p style="font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:2.5rem;" class="reveal">Let's build scalable IT systems and powerful web solutions.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="reveal">
+      <a href="mailto:mamun191152576@gmail.com" style="display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;padding:0.9rem 2.2rem;border-radius:10px;font-size:0.84rem;font-weight:600;text-decoration:none;box-shadow:0 0 30px rgba(37,99,235,0.4);letter-spacing:0.03em;">✉️ Send a Message</a>
+      <a href="cv.pdf" style="display:inline-flex;align-items:center;gap:9px;background:transparent;color:#fff;padding:0.9rem 2.2rem;border-radius:10px;font-size:0.84rem;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,0.2);letter-spacing:0.03em;">📄 Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ FOOTER ══════════════════════════════════ -->
+<footer style="background:#07080f;padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,0.06);">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;color:#fff;">AM</div>
+    <span style="font-size:0.78rem;color:rgba(255,255,255,0.3);">© 2026 <span style="color:#93c5fd;font-weight:600;">Al Mamun</span>. All rights reserved.</span>
+  </div>
+  <span style="font-size:0.78rem;color:rgba(255,255,255,0.25);">IT Engineer · Web Developer · <span style="color:rgba(255,255,255,0.4);">Dhaka, BD</span></span>
+</footer>
+
+<script>
+  // Responsive: show hamburger on small screens
+  function checkMobile(){
+    var ham = document.getElementById('hamburger');
+    var links = document.getElementById('navLinks');
+    if(window.innerWidth <= 768){
+      ham.style.display = 'block';
+      links.style.display = 'none';
+    } else {
+      ham.style.display = 'none';
+      links.style.display = 'flex';
+      document.getElementById('mobileMenu').style.display = 'none';
+    }
+  }
+  var menuOpen = false;
+  function toggleMobileNav(){
+    menuOpen = !menuOpen;
+    document.getElementById('mobileMenu').style.display = menuOpen ? 'block' : 'none';
+  }
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+
+  // Scroll reveal
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var delay = parseInt(e.target.dataset.d || 0);
+        setTimeout(function(){ e.target.classList.add('vis'); }, delay);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el, i){
+    el.dataset.d = (i % 4) * 100;
+    obs.observe(el);
+  });
+
+  // Active nav highlight
+  var navAs = document.querySelectorAll('#navLinks a');
+  var secs = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', function(){
+    var cur = '';
+    secs.forEach(function(s){ if(window.scrollY >= s.offsetTop - 120) cur = s.id; });
+    navAs.forEach(function(a){
+      var isActive = a.getAttribute('href') === '#'+cur;
+      a.style.color = isActive ? '#fff' : '';
+      a.style.borderBottomColor = isActive ? '#60a5fa' : 'transparent';
+    });
+    // Compact nav on scroll
+    var nav = document.getElementById('mainNav');
+    nav.style.background = window.scrollY > 50 ? 'rgba(7,8,15,0.97)' : 'rgba(7,8,15,0.85)';
+  });
+</script>
+
+</body>
+</html>
