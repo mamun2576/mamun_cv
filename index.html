@@ -926,120 +926,255 @@ style="display:none;position:fixed;top:74px;left:0;right:0;z-index:999;backgroun
 </footer>
 
 
- <!-- ══════════════════════════════════ RESPONSIVE JS ══════════════════════════════════ -->
+ <script>
 
-<script>
+  /* ══════════════════════════════════ MOBILE NAV ══════════════════════════════════ */
 
-function toggleMobileNav() {
-
-  const menu = document.getElementById('mobileMenu');
-
-  if(menu.style.display === 'block'){
-    menu.style.display = 'none';
-  } else {
-    menu.style.display = 'block';
-  }
-
-}
-
-function handleNavbar(){
-
-  const nav = document.getElementById('mainNav');
-
-  if(window.scrollY > 30){
-
-    nav.style.background = 'rgba(4,7,18,.92)';
-    nav.style.height = '68px';
-    nav.style.boxShadow = '0 12px 45px rgba(0,0,0,.45)';
-
-  } else {
-
-    nav.style.background = 'rgba(5,8,20,.72)';
-    nav.style.height = '74px';
-    nav.style.boxShadow = '0 10px 40px rgba(0,0,0,.28)';
-
-  }
-
-}
-
-window.addEventListener('scroll', handleNavbar);
-
-function checkMobile(){
-
-  const navLinks = document.getElementById('navLinks');
-  const hamburger = document.getElementById('hamburger');
-
-  if(window.innerWidth <= 900){
-
-    navLinks.style.display = 'none';
-    hamburger.style.display = 'flex';
-
-  } else {
-
-    navLinks.style.display = 'flex';
-    hamburger.style.display = 'none';
-    document.getElementById('mobileMenu').style.display = 'none';
-
-  }
-
-}
-
-checkMobile();
-
-window.addEventListener('resize', checkMobile);
-
-</script>
-<script>
-  // Responsive: show hamburger on small screens
-  function checkMobile(){
-    var ham = document.getElementById('hamburger');
-    var links = document.getElementById('navLinks');
-    if(window.innerWidth <= 768){
-      ham.style.display = 'block';
-      links.style.display = 'none';
-    } else {
-      ham.style.display = 'none';
-      links.style.display = 'flex';
-      document.getElementById('mobileMenu').style.display = 'none';
-    }
-  }
   var menuOpen = false;
+
   function toggleMobileNav(){
+
+    var menu = document.getElementById('mobileMenu');
+    var hamburger = document.getElementById('hamburger');
+
     menuOpen = !menuOpen;
-    document.getElementById('mobileMenu').style.display = menuOpen ? 'block' : 'none';
+
+    if(menuOpen){
+
+      menu.style.display = 'block';
+      menu.style.opacity = '0';
+      menu.style.transform = 'translateY(-10px)';
+
+      setTimeout(function(){
+        menu.style.transition = 'all .28s ease';
+        menu.style.opacity = '1';
+        menu.style.transform = 'translateY(0)';
+      },10);
+
+      hamburger.style.background = 'rgba(255,255,255,.08)';
+
+    } else {
+
+      menu.style.opacity = '0';
+      menu.style.transform = 'translateY(-10px)';
+
+      setTimeout(function(){
+        menu.style.display = 'none';
+      },250);
+
+      hamburger.style.background = 'rgba(255,255,255,.05)';
+    }
+
   }
+
+
+  /* ══════════════════════════════════ RESPONSIVE CHECK ══════════════════════════════════ */
+
+  function checkMobile(){
+
+    var navLinks = document.getElementById('navLinks');
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+
+    if(window.innerWidth <= 900){
+
+      navLinks.style.display = 'none';
+      hamburger.style.display = 'flex';
+
+    } else {
+
+      navLinks.style.display = 'flex';
+      hamburger.style.display = 'none';
+
+      mobileMenu.style.display = 'none';
+
+      menuOpen = false;
+    }
+
+  }
+
   checkMobile();
+
   window.addEventListener('resize', checkMobile);
 
-  // Scroll reveal
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        var delay = parseInt(e.target.dataset.d || 0);
-        setTimeout(function(){ e.target.classList.add('vis'); }, delay);
+
+  /* ══════════════════════════════════ NAVBAR SCROLL EFFECT ══════════════════════════════════ */
+
+  function handleNavbar(){
+
+    var nav = document.getElementById('mainNav');
+
+    if(window.scrollY > 40){
+
+      nav.style.height = '66px';
+      nav.style.background = 'rgba(4,7,18,.94)';
+      nav.style.boxShadow = '0 18px 50px rgba(0,0,0,.45)';
+      nav.style.borderBottom = '1px solid rgba(255,255,255,.08)';
+
+    } else {
+
+      nav.style.height = '74px';
+      nav.style.background = 'rgba(5,8,20,.72)';
+      nav.style.boxShadow = '0 10px 40px rgba(0,0,0,.28)';
+      nav.style.borderBottom = '1px solid rgba(255,255,255,.06)';
+    }
+
+  }
+
+  window.addEventListener('scroll', handleNavbar);
+
+
+  /* ══════════════════════════════════ ACTIVE NAV LINK ══════════════════════════════════ */
+
+  var navLinks = document.querySelectorAll('#navLinks a');
+  var sections = document.querySelectorAll('section[id]');
+
+  function activeNav(){
+
+    var current = '';
+
+    sections.forEach(function(section){
+
+      var sectionTop = section.offsetTop - 140;
+
+      if(window.scrollY >= sectionTop){
+        current = section.getAttribute('id');
       }
+
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(function(el, i){
-    el.dataset.d = (i % 4) * 100;
-    obs.observe(el);
+
+    navLinks.forEach(function(link){
+
+      var href = link.getAttribute('href');
+
+      if(href === '#' + current){
+
+        link.style.color = '#ffffff';
+        link.style.background = 'rgba(255,255,255,.06)';
+        link.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,.04)';
+
+      } else {
+
+        link.style.color = 'rgba(255,255,255,.58)';
+        link.style.background = 'transparent';
+        link.style.boxShadow = 'none';
+      }
+
+    });
+
+  }
+
+  window.addEventListener('scroll', activeNav);
+
+
+  /* ══════════════════════════════════ SCROLL REVEAL ══════════════════════════════════ */
+
+  var observer = new IntersectionObserver(function(entries){
+
+    entries.forEach(function(entry){
+
+      if(entry.isIntersecting){
+
+        var delay = parseInt(entry.target.dataset.delay || 0);
+
+        setTimeout(function(){
+
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          entry.target.style.transition = 'all .8s cubic-bezier(.2,.8,.2,1)';
+
+        }, delay);
+
+      }
+
+    });
+
+  }, {
+    threshold: 0.12
   });
 
-  // Active nav highlight
-  var navAs = document.querySelectorAll('#navLinks a');
-  var secs = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', function(){
-    var cur = '';
-    secs.forEach(function(s){ if(window.scrollY >= s.offsetTop - 120) cur = s.id; });
-    navAs.forEach(function(a){
-      var isActive = a.getAttribute('href') === '#'+cur;
-      a.style.color = isActive ? '#fff' : '';
-      a.style.borderBottomColor = isActive ? '#60a5fa' : 'transparent';
-    });
-    // Compact nav on scroll
-    var nav = document.getElementById('mainNav');
-    nav.style.background = window.scrollY > 50 ? 'rgba(7,8,15,0.97)' : 'rgba(7,8,15,0.85)';
+
+  document.querySelectorAll('.reveal').forEach(function(el, index){
+
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(35px)';
+
+    el.dataset.delay = (index % 5) * 100;
+
+    observer.observe(el);
+
   });
+
+
+  /* ══════════════════════════════════ SMOOTH SCROLL ══════════════════════════════════ */
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+
+    anchor.addEventListener('click', function(e){
+
+      var targetId = this.getAttribute('href');
+
+      if(targetId.length > 1){
+
+        e.preventDefault();
+
+        var target = document.querySelector(targetId);
+
+        if(target){
+
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: 'smooth'
+          });
+
+        }
+
+      }
+
+    });
+
+  });
+
+
+  /* ══════════════════════════════════ CLOSE MOBILE MENU ON OUTSIDE CLICK ══════════════════════════════════ */
+
+  document.addEventListener('click', function(e){
+
+    var menu = document.getElementById('mobileMenu');
+    var hamburger = document.getElementById('hamburger');
+
+    if(
+      menuOpen &&
+      !menu.contains(e.target) &&
+      !hamburger.contains(e.target)
+    ){
+
+      toggleMobileNav();
+
+    }
+
+  });
+
+
+  /* ══════════════════════════════════ PAGE LOAD ANIMATION ══════════════════════════════════ */
+
+  window.addEventListener('load', function(){
+
+    var nav = document.getElementById('mainNav');
+
+    nav.style.opacity = '0';
+    nav.style.transform = 'translateY(-18px)';
+
+    setTimeout(function(){
+
+      nav.style.transition = 'all .7s ease';
+      nav.style.opacity = '1';
+      nav.style.transform = 'translateY(0)';
+
+    },100);
+
+  });
+
 </script>
 
 </body>
